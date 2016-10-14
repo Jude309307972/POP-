@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "TableViewController.h"
+#import "UIColor+CustomColors.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    TableViewController *animationsListViewController = [TableViewController new];
+    UINavigationController *navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:animationsListViewController];
+    
+    [self.window setRootViewController:navigationController];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.tintColor = [UIColor customBlueColor];
+    [self.window makeKeyAndVisible];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:20],
+                                                           NSForegroundColorAttributeName: [UIColor customGrayColor]}];
     return YES;
 }
 
